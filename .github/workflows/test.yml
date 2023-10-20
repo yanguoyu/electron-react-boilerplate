@@ -35,11 +35,11 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: ElectronReact-Linux-arm64
-          path: release/ElectronReact-*-arm64.AppImage
+          path: release/build/ElectronReact-*-arm64.AppImage
 
       - name: Upload ElectronReact Linux(x64)
         if: matrix.os == 'ubuntu-20.04'
         uses: actions/upload-artifact@v3
         with:
           name: ElectronReact-Linux-x64
-          path: release/ElectronReact-*-x86_64.AppImage
+          path: release/build/ElectronReact-*-x86_64.AppImage
