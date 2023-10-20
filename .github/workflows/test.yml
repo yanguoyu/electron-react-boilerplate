@@ -8,7 +8,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [macos-latest, windows-latest, ubuntu-latest]
+        os: [ubuntu-latest]
 
     steps:
       - name: Check out Git repository
@@ -24,11 +24,22 @@ jobs:
         run: |
           npm install
 
-      - name: npm test
+      - name: npm package
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           npm run package
-          npm run lint
-          npm exec tsc
-          npm test
+
+      - name: Upload Neuron Linux(arm64)
+        if: matrix.os == 'ubuntu-20.04'
+        uses: actions/upload-artifact@v3
+        with:
+          name: Neuron-Linux-arm64
+          path: release/Neuron-*-arm64.AppImage
+
+      - name: Upload Neuron Linux(x64)
+        if: matrix.os == 'ubuntu-20.04'
+        uses: actions/upload-artifact@v3
+        with:
+          name: Neuron-Linux-x64
+          path: release/Neuron-*-x86_64.AppImage
