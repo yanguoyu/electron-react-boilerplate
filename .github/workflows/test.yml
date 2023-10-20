@@ -30,16 +30,16 @@ jobs:
         run: |
           npm run package
 
-      - name: Upload Neuron Linux(arm64)
+      - name: Upload ElectronReact Linux(arm64)
         if: matrix.os == 'ubuntu-20.04'
         uses: actions/upload-artifact@v3
         with:
-          name: Neuron-Linux-arm64
-          path: release/Neuron-*-arm64.AppImage
+          name: ElectronReact-Linux-arm64
+          path: release/ElectronReact-*-arm64-linux.AppImage
 
-      - name: Upload Neuron Linux(x64)
+      - name: Upload ElectronReact Linux(x64)
         if: matrix.os == 'ubuntu-20.04'
         uses: actions/upload-artifact@v3
         with:
-          name: Neuron-Linux-x64
-          path: release/Neuron-*-x86_64.AppImage
+          name: ElectronReact-Linux-x64
+          path: release/ElectronReact-*-x86_64-linux.AppImage
